@@ -44,4 +44,15 @@ This repo includes a serverless function entrypoint at:
 
 It handles all requests under `/api/*`.
 
+### If `/api/health` works but `/api/auth/login` (or any `/api/*/*`) is `NOT_FOUND`
+
+That indicates Vercel routing is not sending deep paths into the catch-all function.
+
+This repo includes `vercel.json` to force all `/api/(.*)` requests to route to `api/[...path].ts`.
+
+After adding it:
+
+- Commit + push
+- Redeploy on Vercel (Production)
+
 
